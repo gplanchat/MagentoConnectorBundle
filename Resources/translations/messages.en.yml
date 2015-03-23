@@ -177,3 +177,4 @@ job_execution.summary:
     product_image_sent:        Products images sent
     product_sent:              Products sent
     product_translation_sent:  Products images sent
+    displayed:                 Warnings
