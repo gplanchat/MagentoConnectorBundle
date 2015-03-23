@@ -9,6 +9,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - picture
             - main_color
         requirements:
@@ -16,16 +17,19 @@ families:
                 - sku
                 - name
                 - price
+                - tax_class_id
                 - main_color
             mobile:
                 - sku
                 - name
                 - price
+                - tax_class_id
                 - main_color
             ecommerce:
                 - sku
                 - name
                 - price
+                - tax_class_id
                 - main_color
     pc_monitors:
         labels:
@@ -37,6 +41,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - display_diagonal
@@ -51,18 +56,21 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - display_diagonal
             mobile:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - display_diagonal
             ecommerce:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - display_diagonal
     led_tvs:
         labels:
@@ -74,6 +82,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - display_diagonal
@@ -85,18 +94,21 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - display_diagonal
             mobile:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - display_diagonal
             ecommerce:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - display_diagonal
     camcorders:
         labels:
@@ -108,6 +120,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - sensor_type
@@ -122,6 +135,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - sensor_type
                 - total_megapixels
             mobile:
@@ -129,6 +143,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - sensor_type
                 - total_megapixels
             ecommerce:
@@ -136,6 +151,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - sensor_type
                 - total_megapixels
     digital_cameras:
@@ -148,6 +164,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - camera_type
@@ -183,6 +200,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - camera_type
                 - sensor_type
                 - total_megapixels
@@ -191,6 +209,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - camera_type
                 - sensor_type
                 - total_megapixels
@@ -199,6 +218,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - camera_type
                 - sensor_type
                 - total_megapixels
@@ -233,6 +253,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - total_megapixels
@@ -246,6 +267,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - total_megapixels
                 - maximum_video_resolution
             mobile:
@@ -253,6 +275,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - total_megapixels
                 - maximum_video_resolution
             ecommerce:
@@ -260,6 +283,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - total_megapixels
                 - maximum_video_resolution
     headphones:
@@ -272,6 +296,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - thd
@@ -285,6 +310,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - thd
                 - snr
             mobile:
@@ -292,6 +318,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - thd
                 - snr
             ecommerce:
@@ -299,6 +326,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - thd
                 - snr
     mp3_players:
@@ -311,6 +339,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - weight
@@ -321,16 +350,19 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
             mobile:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
             ecommerce:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
     loudspeakers:
         labels:
             en_US: Loudspeakers
@@ -341,6 +373,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - weight
@@ -351,16 +384,19 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
             mobile:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
             ecommerce:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
     multifunctionals:
         labels:
             en_US: Multifunctionals
@@ -371,6 +407,7 @@ families:
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - color_scanning
@@ -384,6 +421,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - color_scanning
                 - multifunctional_functions
             mobile:
@@ -391,6 +429,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - color_scanning
                 - multifunctional_functions
             ecommerce:
@@ -398,6 +437,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - color_scanning
                 - multifunctional_functions
     laser_led_printers:
@@ -411,24 +451,28 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - maximum_print_size
             mobile:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - maximum_print_size
             ecommerce:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - maximum_print_size
         attributes:
             - sku
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - maximum_print_size
@@ -445,24 +489,28 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
                 - color_scanning
             mobile:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - color_scanning
             ecommerce:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
                 - color_scanning
         attributes:
             - sku
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - color_scanning
@@ -480,21 +528,25 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
             mobile:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
             ecommerce:
                 - sku
                 - name
                 - description
                 - price
+                - tax_class_id
         attributes:
             - sku
             - name
             - description
             - price
+            - tax_class_id
             - release_date
             - picture
             - weight
@@ -510,18 +562,21 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
             mobile:
                 - sku
                 - name
                 - description
                 - main_color
                 - price
+                - tax_class_id
             ecommerce:
                 - sku
                 - name
                 - description
                 - main_color
                 - price
+                - tax_class_id
                 - container_material
         attributes:
             - sku
@@ -529,6 +584,7 @@ families:
             - description
             - main_color
             - price
+            - tax_class_id
             - picture
             - container_material
 
@@ -542,6 +598,7 @@ families:
                 - name
                 - description
                 - price
+                - tax_class_id
             mobile:
                 - sku
                 - name
@@ -549,6 +606,7 @@ families:
                 - main_color
                 - secondary_color
                 - price
+                - tax_class_id
                 - clothing_size
             ecommerce:
                 - sku
@@ -556,7 +614,8 @@ families:
                 - description
                 - main_color
                 - secondary_color
-                - tshirt_materials
+                - price
+                - tax_class_id
                 - clothing_size
         attributes:
             - sku
@@ -565,6 +624,7 @@ families:
             - main_color
             - secondary_color
             - price
+            - tax_class_id
             - picture
             - clothing_size
             - tshirt_materials

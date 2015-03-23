@@ -13,11 +13,9 @@ The following Magento's attributes are mandatory for Magento and have to be crea
 - short_description
 - tax_class_id
 
-Also note that you should NEVER try to change/update attributes on Akeneo that are of system type on Magento side (except if you really want to completely break your Magento install).
+Also note that you should NEVER try to change/update attributes on Akeneo that are of system type on Magento side (except if you really want to completely break your Magento install). Your Akeneo attributes need to have type corresponding to Magento attribute types (see below Attribute type mapping).
 
-Your Akeneo attributes need to have type corresponding to Magento attribute types. (see below Attribute type mapping)
-
-You can now create export jobs.
+However, this rule **doesn't apply to tax_class_id**. This particular attribute must be a **number type** on Akeneo side. Indeed, even if it is a simple select attribute on Magento side, the soap api will expect a number when exporting products. This number corresponds to the id of the product tax class. By default, these Magento values are 0 (none), 2 (taxable goods), and 4 (shipping). You can access these values on Magento admin panel: `Sales > Tax > Product Tax Classes`.
 
 ## Attribute type mapping
 
@@ -64,6 +62,8 @@ You can now create export jobs.
 </tr>
 </header>
 </table>
+
+You can now create export jobs.
 
 ## Exporting structure
 

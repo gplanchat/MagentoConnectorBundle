@@ -1,5 +1,5 @@
 # 1.2.1 (2015-xx-xx)
-## Bug fixes
+## Improvement
  - Add a tax_class_id attribute to fixtures
 
 # 1.2.0 (2015-03-12)
