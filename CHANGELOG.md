@@ -1,4 +1,8 @@
-# 1.2.0
+# 1.2.1 (2015-xx-xx)
+## Bug fixes
+ - Add a tax_class_id attribute to fixtures
+
+# 1.2.0 (2015-03-12)
 ## New feature
  - Delta Export is directly integrated in MagentoConnector (DeltaExportBundle is now deprecated)
  - Connector Mapping is directly integrated in MagentoConnector (ConnectorMappingBundle is now deprecated)

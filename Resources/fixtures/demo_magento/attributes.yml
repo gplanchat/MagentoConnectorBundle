@@ -234,6 +234,14 @@ attributes:
         useableAsGridFilter: true
         sortOrder: 25
         decimalsAllowed: true
+    tax_class_id:
+        labels:
+             en_US: 'Tax classes'
+             fr_FR: 'Classes de taxe'
+         type: pim_catalog_number
+         group: technical
+         sortOrder: 26
+         useableAsGridFilter: true
     picture:
         labels:
             en_US: Picture
