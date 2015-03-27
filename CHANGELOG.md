@@ -2,8 +2,6 @@
 ## Improvement
  - Add a tax_class_id attribute to fixtures
  - Add job_execution.summary.displayed missing translations
-
-## Bug Fix
  - 464: Fix storage driver getter
 
 # 1.2.0 (2015-03-12)
