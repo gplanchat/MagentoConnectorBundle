@@ -2,6 +2,7 @@
 
 namespace Pim\Bundle\MagentoConnectorBundle\DependencyInjection;
 
+use Pim\Bundle\CatalogBundle\Version;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -56,8 +57,10 @@ class PimMagentoConnectorExtension extends Extension
      */
     protected function getStorageDriver(ContainerBuilder $container)
     {
-        return $container->hasParameter('pim_catalog_storage_driver') ?
-            $container->getParameter('pim_catalog_storage_driver') :
-            $container->getParameter('pim_catalog_product_storage_driver');
+        if (version_compare(Version::VERSION, '1.3.0', '<')) {
+            return $container->getParameter('pim_catalog_storage_driver');
+        } else {
+            return $container->getParameter('pim_catalog_product_storage_driver');
+        }
     }
 }
