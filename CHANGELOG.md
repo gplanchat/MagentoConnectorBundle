@@ -1,3 +1,7 @@
+#1.2.2 (2015-03-30)
+## Bug fix
+ - Fix regression on Magento extension to get PIM version
+
 # 1.2.1 (2015-03-27)
 ## Improvement
  - Add a tax_class_id attribute to fixtures
