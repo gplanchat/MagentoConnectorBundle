@@ -103,6 +103,8 @@ Create a new export profile and select `magento_product_export`. Complete the gl
 
 Optionally, you can also choose if the product is visible or not on Magento, the currency, thumbnails, associations… Again, take a look at the [list](./fields_list.md) to see all existing options.
 
+And remember that, like for any other Akeneo export jobs, products have to be **complete and active** to be exported.
+
 ### ! Important
 
 The product export is in fact a delta export: only products updated since the last export will be exported again. If this is the first time you run it, then all products will be exported.
