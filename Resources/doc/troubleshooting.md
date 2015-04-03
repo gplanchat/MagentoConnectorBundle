@@ -1,5 +1,19 @@
 # Troubleshooting
 
+## Magento URL problem
+
+If you encounter an error message complaining about wsdl url, like in the following screenshot, then you probably have a problem with URL Rewriting.
+
+![WSDL URL problem](./images/troubleshooting/bad-url.png)
+
+First, check that URL rewriting is enabled in Magento (in `System > Configuration`, go to `General > Web > Search Engines Optimization` and select “Yes”).
+
+If the problem persists, you probably have a non standard Apache configuration. Then you can simply complete in the PIM export profile the Magento URL by adding `/index.php`.
+
+## Error Fetching http headers
+
+This error can appears when you have some troubles on Magento server. It probably means that a Segmentation fault or something like that occurs on your Magento server. You can take a look at Magento or Apache2 logs (on Magento server) to have more informations.
+
 ## Cannot create image
 
 This error is in fact pretty rarely linked to images themselves. When the Magento Connector Bundle sends the image after the product has been created or updated, Magento goes through the Product save event flow. On this event, the url_key is generated. If a product has already been created with the same name, the url_key cannot be generated and an error is issued, triggering a "Cannot create image" error, and losing at the same time the real reason why the image was not created.
@@ -23,16 +37,6 @@ then you probably have forget to reinstall assets after installing the Magento c
     php app/console pim:installer:assets
     
 should settle the problem.
-
-## Magento URL problem
-
-If you encounter an error message complaining about wsdl url, like in the following screenshot, then you probably have a problem with URL Rewriting.
-
-![WSDL URL problem](./images/troubleshooting/bad-url.png)
-
-First, check that URL rewriting is enabled in Magento (in `System > Configuration`, go to `General > Web > Search Engines Optimization` and select “Yes”).
-
-If the problem persists, you probably have a non standard Apache configuration. Then you can simply complete in the PIM export profile the Magento URL by adding `/index.php`.
 
 ## Nothing happens on attribute group update
 
