@@ -59,9 +59,14 @@ You can now update your database:
 
     php app/console doctrine:schema:update --force
 
-Don't forget to reinstall pim assets:
+Don't forget to reinstall pim assets, then clear the cache:
 
     php app/console pim:installer:assets
+    php app/console cache:clear --env=prod
+
+Finally you can restart your apache server:
+
+    service apache2 restart
 
 ## Installing the Magento Connector in an Akeneo PIM development environment (master)
 
