@@ -71,7 +71,9 @@ First, you need to export Akeneo's structure to Magento, in order to have the sa
 
 This is done by two distinct export jobs: `magento_category_export` (which export categories, what a surprise!) and `magento_attribute_export` (which export attributes, families (named attribute sets on magento), and options).
 
-**Note**: In v1.1, the recommended way to export the structure was to perform a `magento_full_export`, to avoid any conflicts. `magento_category_export` had already the same use, however `magento_attribute_export` did only export attributes, not families nor options. 
+**Note**: In v1.1, the recommended way to export the structure was to perform a `magento_full_export`, to avoid any conflicts. `magento_category_export` had already the same use, however `magento_attribute_export` did only export attributes, not families nor options.
+
+**Note**: Only attributes that are linked to a family will be exported to Magento.
 
 Go to `Spread > Export profiles` and create these two jobs (the order you choose for creating or running them has no importance at all):
 
