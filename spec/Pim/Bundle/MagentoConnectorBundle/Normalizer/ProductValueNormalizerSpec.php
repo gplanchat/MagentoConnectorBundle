@@ -40,7 +40,6 @@ class ProductValueNormalizerSpec extends ObjectBehavior
     function it_normalizes_a_scopable_value($value, $attribute)
     {
         $attribute->isScopable()->willReturn(true);
-
         $attribute->isLocalizable()->willReturn(false);
 
         $this->normalize($value, 'MagentoArray', $this->globalContext)->shouldReturn(['attribute_code' => 'hello']);

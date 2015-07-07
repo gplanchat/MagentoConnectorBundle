@@ -73,7 +73,7 @@ class ProductAssociationProcessorSpec extends ObjectBehavior
 
         $associatedProduct->getIdentifier()->willReturn('sku-011');
         $associatedProduct->isEnabled()->willReturn(true);
-        $associatedProduct->getCompletenesses()->willReturn($completeness);
+        $associatedProduct->getCompletenesses()->willReturn([$completeness]);
         $completeness->getRatio()->willReturn(100);
 
         $associationType->getCode()->willReturn('UPSELL');
