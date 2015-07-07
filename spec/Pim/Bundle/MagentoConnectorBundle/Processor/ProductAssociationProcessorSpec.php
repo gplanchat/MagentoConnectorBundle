@@ -7,6 +7,7 @@ use Akeneo\Bundle\BatchBundle\Event\EventInterface;
 use PhpSpec\ObjectBehavior;
 use Pim\Bundle\CatalogBundle\Entity\AssociationType;
 use Pim\Bundle\CatalogBundle\Model\Association;
+use Pim\Bundle\CatalogBundle\Model\Completeness;
 use Pim\Bundle\CatalogBundle\Model\ProductInterface;
 use Pim\Bundle\MagentoConnectorBundle\Guesser\NormalizerGuesser;
 use Pim\Bundle\MagentoConnectorBundle\Guesser\WebserviceGuesser;
@@ -52,12 +53,13 @@ class ProductAssociationProcessorSpec extends ObjectBehavior
         $this->setPimUpSell('UPSELL');
     }
 
-    function it_generates_association_calls_for_given_products(
+    function it_generates_association_calls_for_given_products_if_associated_product_is_complete_and_enabled(
         $webservice,
         ProductInterface $product,
         ProductInterface $associatedProduct,
         Association $association,
-        AssociationType $associationType
+        AssociationType $associationType,
+        Completeness $completeness
     ) {
         $webservice->getAssociationsStatus($product)->willReturn(
             ['up_sell' => [], 'cross_sell' => [['sku' => 'sku-011']], 'related' => []]
@@ -70,6 +72,9 @@ class ProductAssociationProcessorSpec extends ObjectBehavior
         $association->getProducts()->willReturn([$associatedProduct]);
 
         $associatedProduct->getIdentifier()->willReturn('sku-011');
+        $associatedProduct->isEnabled()->willReturn(true);
+        $associatedProduct->getCompletenesses()->willReturn([$completeness]);
+        $completeness->getRatio()->willReturn(100);
 
         $associationType->getCode()->willReturn('UPSELL');
 
@@ -88,9 +93,130 @@ class ProductAssociationProcessorSpec extends ObjectBehavior
                         'type'           => 'up_sell',
                         'product'        => 'sku-012',
                         'linkedProduct'  => 'sku-011',
+                        'data'           => [],
                         'identifierType' => 'sku',
                     ],
                 ],
+            ]
+        );
+    }
+
+    function it_does_not_generate_association_calls_for_given_products_if_associated_product_is_not_enabled(
+        $webservice,
+        ProductInterface $product,
+        ProductInterface $associatedProduct,
+        Association $association,
+        AssociationType $associationType,
+        Completeness $completeness
+    ) {
+        $webservice->getAssociationsStatus($product)->willReturn(
+            ['up_sell' => [], 'cross_sell' => [['sku' => 'sku-011']], 'related' => []]
+        );
+
+        $product->getIdentifier()->willReturn('sku-012');
+        $product->getAssociations()->willReturn([$association]);
+
+        $association->getAssociationType()->willReturn($associationType);
+        $association->getProducts()->willReturn([$associatedProduct]);
+
+        $associatedProduct->getIdentifier()->willReturn('sku-011');
+        $associatedProduct->isEnabled()->willReturn(false);
+        $associatedProduct->getCompletenesses()->willReturn([$completeness]);
+        $completeness->getRatio()->willReturn(100);
+
+        $associationType->getCode()->willReturn('UPSELL');
+
+        $this->process([$product])->shouldReturn(
+            [
+                'remove' => [
+                    [
+                        'type'           => 'cross_sell',
+                        'product'        => 'sku-012',
+                        'linkedProduct'  => 'sku-011',
+                        'identifierType' => 'sku',
+                    ],
+                ],
+                'create' => [],
+            ]
+        );
+    }
+
+    function it_does_not_generate_association_calls_for_given_products_if_associated_product_is_not_complete(
+        $webservice,
+        ProductInterface $product,
+        ProductInterface $associatedProduct,
+        Association $association,
+        AssociationType $associationType,
+        Completeness $completeness
+    ) {
+        $webservice->getAssociationsStatus($product)->willReturn(
+            ['up_sell' => [], 'cross_sell' => [['sku' => 'sku-011']], 'related' => []]
+        );
+
+        $product->getIdentifier()->willReturn('sku-012');
+        $product->getAssociations()->willReturn([$association]);
+
+        $association->getAssociationType()->willReturn($associationType);
+        $association->getProducts()->willReturn([$associatedProduct]);
+
+        $associatedProduct->getIdentifier()->willReturn('sku-011');
+        $associatedProduct->isEnabled()->willReturn(true);
+        $associatedProduct->getCompletenesses()->willReturn([$completeness]);
+        $completeness->getRatio()->willReturn(50);
+
+        $associationType->getCode()->willReturn('UPSELL');
+
+        $this->process([$product])->shouldReturn(
+            [
+                'remove' => [
+                    [
+                        'type'           => 'cross_sell',
+                        'product'        => 'sku-012',
+                        'linkedProduct'  => 'sku-011',
+                        'identifierType' => 'sku',
+                    ],
+                ],
+                'create' => [],
+            ]
+        );
+    }
+
+    function it_does_not_generate_association_calls_for_given_products_if_associated_product_is_not_complete_nor_enable(
+        $webservice,
+        ProductInterface $product,
+        ProductInterface $associatedProduct,
+        Association $association,
+        AssociationType $associationType,
+        Completeness $completeness
+    ) {
+        $webservice->getAssociationsStatus($product)->willReturn(
+            ['up_sell' => [], 'cross_sell' => [['sku' => 'sku-011']], 'related' => []]
+        );
+
+        $product->getIdentifier()->willReturn('sku-012');
+        $product->getAssociations()->willReturn([$association]);
+
+        $association->getAssociationType()->willReturn($associationType);
+        $association->getProducts()->willReturn([$associatedProduct]);
+
+        $associatedProduct->getIdentifier()->willReturn('sku-011');
+        $associatedProduct->isEnabled()->willReturn(false);
+        $associatedProduct->getCompletenesses()->willReturn([$completeness]);
+        $completeness->getRatio()->willReturn(50);
+
+        $associationType->getCode()->willReturn('UPSELL');
+
+        $this->process([$product])->shouldReturn(
+            [
+                'remove' => [
+                    [
+                        'type'           => 'cross_sell',
+                        'product'        => 'sku-012',
+                        'linkedProduct'  => 'sku-011',
+                        'identifierType' => 'sku',
+                    ],
+                ],
+                'create' => [],
             ]
         );
     }

@@ -1,3 +1,9 @@
+#1.2.3 (2015-07-07)
+## Bug fix
+ - Check if associated product is complete and enable before association export
+ - Correct product association when SKU is full number
+ - Emptied fields in Akeneo are cleared in Magento by the product export
+
 #1.2.2 (2015-03-30)
 ## Bug fix
  - Fix regression on Magento extension to get PIM version

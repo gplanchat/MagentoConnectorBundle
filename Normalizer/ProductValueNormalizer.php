@@ -28,6 +28,9 @@ class ProductValueNormalizer implements NormalizerInterface
     /** @staticvar string */
     const GLOBAL_SCOPE = 'global';
 
+    /** @staticvar string */
+    const BOOLEAN_TYPE = 'pim_catalog_boolean';
+
     /**
      * {@inheritdoc}
      */
@@ -84,9 +87,8 @@ class ProductValueNormalizer implements NormalizerInterface
         $localeCode,
         $onlyLocalized
     ) {
-        return (
+        $isValueNormalizable = (
             ($value !== $identifier) &&
-            ($value->getData() !== null) &&
             $this->isScopeNormalizable($value, $scopeCode) &&
             $this->isLocaleNormalizable($value, $localeCode) &&
             (
@@ -97,6 +99,8 @@ class ProductValueNormalizer implements NormalizerInterface
             $this->attributeIsNotIgnored($attributeCode) &&
             !($value->getData() instanceof AbstractProductMedia)
         );
+
+        return $isValueNormalizable;
     }
 
     /**
@@ -180,8 +184,16 @@ class ProductValueNormalizer implements NormalizerInterface
         MappingCollection $attributeMapping,
         $currencyCode
     ) {
-        $data          = $value->getData();
-        $attribute     = $value->getAttribute();
+        $attribute = $value->getAttribute();
+        $data      = $value->getData();
+
+        if (null === $data) {
+            if (static::BOOLEAN_TYPE === $attribute->getAttributeType()) {
+                $data = false;
+            } else {
+                $data = '';
+            }
+        }
 
         if (!isset($magentoAttributes[$attributeCode])) {
             throw new AttributeNotFoundException(

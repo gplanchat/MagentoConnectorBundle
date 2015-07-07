@@ -222,12 +222,17 @@ class ProductAssociationProcessor extends AbstractProcessor
 
         if (in_array($associationType, array_keys($this->getAssociationCodeMapping()))) {
             foreach ($association->getProducts() as $associatedProduct) {
-                $createAssociationCalls[] = [
-                    'type'           => $this->getAssociationCodeMapping()[$associationType],
-                    'product'        => (string) $product->getIdentifier(),
-                    'linkedProduct'  => (string) $associatedProduct->getIdentifier(),
-                    'identifierType' => 'sku',
-                ];
+                if ($associatedProduct->isEnabled() &&
+                    $this->isComplete($associatedProduct)
+                ) {
+                    $createAssociationCalls[] = [
+                        'type'           => $this->getAssociationCodeMapping()[$associationType],
+                        'product'        => (string) $product->getIdentifier(),
+                        'linkedProduct'  => (string) $associatedProduct->getIdentifier(),
+                        'data'           => [],
+                        'identifierType' => 'sku',
+                    ];
+                }
             }
         }
 
@@ -342,5 +347,24 @@ class ProductAssociationProcessor extends AbstractProcessor
                 ],
             ]
         );
+    }
+
+    /**
+     * @param ProductInterface $product
+     *
+     * @return bool
+     */
+    protected function isComplete(ProductInterface $product)
+    {
+        $isComplete = false;
+        $completenesses = $product->getCompletenesses();
+
+        foreach ($completenesses as $completeness) {
+            if ($completeness->getRatio() === 100) {
+                $isComplete = true;
+            }
+        }
+
+        return $isComplete;
     }
 }
