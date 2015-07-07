@@ -229,6 +229,7 @@ class ProductAssociationProcessor extends AbstractProcessor
                         'type'           => $this->getAssociationCodeMapping()[$associationType],
                         'product'        => (string) $product->getIdentifier(),
                         'linkedProduct'  => (string) $associatedProduct->getIdentifier(),
+                        'data'           => [],
                         'identifierType' => 'sku',
                     ];
                 }

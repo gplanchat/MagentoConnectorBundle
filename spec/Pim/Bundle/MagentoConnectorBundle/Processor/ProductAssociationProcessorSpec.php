@@ -93,6 +93,7 @@ class ProductAssociationProcessorSpec extends ObjectBehavior
                         'type'           => 'up_sell',
                         'product'        => 'sku-012',
                         'linkedProduct'  => 'sku-011',
+                        'data'           => [],
                         'identifierType' => 'sku',
                     ],
                 ],
