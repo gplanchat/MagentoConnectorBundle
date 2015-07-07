@@ -356,12 +356,12 @@ class ProductAssociationProcessor extends AbstractProcessor
      */
     protected function isComplete(ProductInterface $product)
     {
-        $isComplete = true;
+        $isComplete = false;
         $completenesses = $product->getCompletenesses();
 
         foreach ($completenesses as $completeness) {
-            if ($completeness->getRatio() !== 100) {
-                $isComplete = false;
+            if ($completeness->getRatio() === 100) {
+                $isComplete = true;
             }
         }
 
