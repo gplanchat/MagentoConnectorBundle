@@ -22,8 +22,7 @@
         }
     ],
     "require": {
-        "guzzle/service": ">=3.6.0,<3.8.0",
-        "akeneo/pim-community-dev": "~1.2@stable,<1.4"
+        "akeneo/pim-community-dev": "~1.5@stable"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev",
@@ -34,11 +33,10 @@
         "phpmd/phpmd": "1.*"
     },
     "autoload": {
-        "psr-0": { "Pim\\Bundle\\MagentoConnectorBundle\\": "" }
+        "psr-4": { "src/": "Pim\\Bundle\\MagentoConnectorBundle\\" }
     },
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "dev",
-    "target-dir": "Pim/Bundle/MagentoConnectorBundle"
+    "minimum-stability": "dev"
 }
