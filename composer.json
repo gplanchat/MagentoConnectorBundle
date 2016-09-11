@@ -33,7 +33,7 @@
         "phpmd/phpmd": "1.*"
     },
     "autoload": {
-        "psr-4": { "src/": "Pim\\Bundle\\MagentoConnectorBundle\\" }
+        "psr-4": { "Pim\\Bundle\\MagentoConnectorBundle\\": "src/" }
     },
     "config": {
         "bin-dir": "bin"
